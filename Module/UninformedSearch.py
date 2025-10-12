@@ -151,7 +151,7 @@ def UCS(self, start_node):
 
                 if (all(child_node.state != n.state for n in frontier.queue) and (child_state_tuple not in explored)):
                     frontier.put(child_node)
-                elif (child_state_tuple in explored and child_cost < explored[child_state_tuple]):
+                elif (any(child_node.state == n.state for n in frontier.queue) and child_cost < explored[child_state_tuple]):
                     explored[child_state_tuple] = child_cost
                     # frontier.put(child_node)
                     for i, n in enumerate(frontier.queue):
