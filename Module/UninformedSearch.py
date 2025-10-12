@@ -125,7 +125,7 @@ def UCS(self, start_node):
         for j in range(self.n):
             if all(y != j for (_, y) in state):
                 new_state = state[:] + [(i, j)]
-                new_cost = abs(self.n - i - 1) + abs(self.n - j - 1)
+                new_cost = self.cost((i, j))
                 actions.append((new_state, new_cost))
         
         return actions

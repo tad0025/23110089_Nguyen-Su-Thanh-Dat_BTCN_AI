@@ -258,3 +258,9 @@ class EightRooksApp(ctk.CTk):
         self.log_textbox.insert("end", message + "\n")
         self.log_textbox.see("end")
         self.update_idletasks()
+
+    def cost(self, positions):
+        return 2 * (self.n - len(positions)) + 1 # cost = số ô ko thể đặt sau khi đạt tại ô i,j trên bàn cờ
+    def heuristic(self, positions):
+        x, y = positions
+        return abs(self.n - x - 1) + abs(self.n - y - 1)
