@@ -7,7 +7,7 @@ for package in required:
     except ImportError:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-from UI.UIComponents import EightRooksApp
+from Module.UIComponents import EightRooksApp
 
 if __name__ == "__main__":
     app = EightRooksApp()

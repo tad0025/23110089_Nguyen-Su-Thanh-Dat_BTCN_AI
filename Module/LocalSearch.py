@@ -139,7 +139,7 @@ def Genetic_Algorithm(self, start_node):
         self.add_log("No solution")
         self.right_label.configure(text="No solution")
 
-def Beam_Search(self, start_node):
+def Beam(self, start_node):
     from queue import PriorityQueue
     from heapq import heapify
 

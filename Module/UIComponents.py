@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from Algorithm.UninformedSearch import *
-from Algorithm.IninformedSearch import *
-from Algorithm.LocalSearch import *
+from Module.UninformedSearch import *
+from Module.IninformedSearch import *
+from Module.LocalSearch import *
 
 ctk.set_appearance_mode("light")  
 ctk.set_default_color_theme("blue")
@@ -22,7 +22,7 @@ algorithms_func = {
     "Local Search --- Hill_Climbing": Hill_Climbing,
     "Local Search --- Simulated_Annealing": Simulated_Annealing,
     "Local Search --- Genetic_Algorithm": Genetic_Algorithm,
-    "Local Search --- Beam_Search": Beam_Search,
+    "Local Search --- Beam_Search": Beam,
     # "Complex Environment Search --- DFS_And_Or",
     # "Complex Environment Search --- Belief_State_Search",
 }
