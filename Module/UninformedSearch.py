@@ -132,7 +132,7 @@ def UCS(self, start_node):
     
     def run(start_node):
         start_node = Node([])
-        path = [([], 0)]; self.add_log("---Path---\n([] , 0)")
+        path = [([], 0)]; self.add_log("---Path---\n[] , Cost: 0")
         frontier = PriorityQueue()
         frontier.put(start_node)
         explored = {tuple(map(tuple, start_node.state)): 0}
