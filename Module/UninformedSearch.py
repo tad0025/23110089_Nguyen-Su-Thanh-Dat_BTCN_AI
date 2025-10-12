@@ -117,6 +117,9 @@ def UCS(self, start_node):
         def __lt__(self, other):
             return self.cost < other.cost
     
+    def cost(positions):
+        return 2 * (self.n - len(positions)) + 1 # cost = số ô ko thể đặt sau khi đạt tại ô i,j trên bàn cờ
+
     def actions(state):
         i = len(state)
         if i >= self.n: return []
@@ -125,7 +128,7 @@ def UCS(self, start_node):
         for j in range(self.n):
             if all(y != j for (_, y) in state):
                 new_state = state[:] + [(i, j)]
-                new_cost = self.cost((i, j))
+                new_cost = cost((i, j))
                 actions.append((new_state, new_cost))
         
         return actions

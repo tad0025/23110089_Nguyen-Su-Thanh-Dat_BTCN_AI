@@ -1,6 +1,12 @@
 from heapq import heapify
 from queue import PriorityQueue
 
+def cost(self, positions):
+    return 2 * (self.n - len(positions)) + 1 # cost = số ô ko thể đặt sau khi đạt tại ô i,j trên bàn cờ
+def heuristic(self, positions):
+    x, y = positions
+    return abs(self.n - x - 1) + abs(self.n - y - 1)
+
 def Greedy(self, start_node):
     class Node:
         def __init__(self, state, heuristic=0, parent=None):
@@ -18,13 +24,13 @@ def Greedy(self, start_node):
         for j in range(self.n):
             if all(y != j for (_, y) in state):
                 new_state = state[:] + [(i, j)]
-                new_heuristic = self.heuristic((i, j))
+                new_heuristic = heuristic(self, (i, j))
                 actions.append((new_state, new_heuristic))
         
         return actions
     
     def run(start_node):
-        start_node = Node([], self.heuristic((0, 0)))
+        start_node = Node([], heuristic(self, (0, 0)))
         path = [([], start_node.heuristic)]; self.add_log("---Path---\n[], Heuristic: " + str(start_node.heuristic))
         
         frontier = PriorityQueue()
@@ -38,8 +44,8 @@ def Greedy(self, start_node):
             self.add_log(str(current_node.state) + " Heuristic: " + str(current_node.heuristic))
             if self.is_goal(current_node.state):
                 return self.solution(current_node), current_node, path
-            for action, heuristic in actions(current_node.state):
-                child_heuristic = heuristic
+            for action, h in actions(current_node.state):
+                child_heuristic = h
                 child_node = Node(action, child_heuristic, current_node)
                 child_state_tuple = tuple(map(tuple, child_node.state))
 
@@ -87,14 +93,14 @@ def A_Star(self, start_node):
         for j in range(self.n):
             if all(y != j for (_, y) in state):
                 new_state = state[:] + [(i, j)]
-                new_cost = self.cost((i, j))
-                new_heuristic = self.heuristic((i, j))
+                new_cost = cost(self, (i, j))
+                new_heuristic = heuristic(self, (i, j))
                 actions.append((new_state, new_cost, new_heuristic))
 
         return actions
     
     def run(start_node):
-        start_node = Node([], self.heuristic((0, 0)))
+        start_node = Node([], heuristic(self, (0, 0)))
         path = [([], (start_node.cost, start_node.heuristic))]; self.add_log("---Path---\n[], Heuristic: " + str(start_node.heuristic))
         
         frontier = PriorityQueue()
@@ -108,9 +114,9 @@ def A_Star(self, start_node):
             self.add_log(str(current_node.state) + " F(n): " + str(current_node.cost+current_node.heuristic))
             if self.is_goal(current_node.state):
                 return self.solution(current_node), current_node, path
-            for action, cost, heuristic in actions(current_node.state):
+            for action, cost, h in actions(current_node.state):
                 child_cost = current_node.cost + cost
-                child_heuristic = heuristic
+                child_heuristic = h
                 child_node = Node(action, child_cost, child_heuristic, current_node)
                 child_state_tuple = tuple(map(tuple, child_node.state))
 
