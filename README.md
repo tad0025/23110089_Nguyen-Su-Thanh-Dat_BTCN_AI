@@ -30,6 +30,8 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 
 ## 3. CẤU TRÚC GIAO DIỆN VÀ CHỨC NĂNG
 
+### 3.1. Cấu Trúc Và Chức Năng
+
 Ứng dụng được xây dựng bằng thư viện `customtkinter` của ngôn ngữ lập trình Python với giao diện hiện đại và trực quan.
 
 1.  **Khung bên Trái:**
@@ -43,7 +45,7 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
     * **Bảng ghi log:** Hiển thị chi tiết các bước, trạng thái đã duyệt, và kết quả của thuật toán dưới dạng văn bản.
     * **Bàn cờ "Kết quả cuối cùng":** Hiển thị lời giải cuối cùng mà thuật toán tìm được.
 
-### 4.1. Lưu ý về Mã nguồn và Hiển thị
+### 3.2. Lưu ý về Mã nguồn và Hiển thị
 
 * **Logic Sinh Trạng thái:** Các thuật toán tìm kiếm truyền thống (Uninformed, Informed, CSP) sinh trạng thái bằng cách đặt quân Xe theo thứ tự từng hàng, giúp giảm không gian tìm kiếm một cách hiệu quả.
 * **Trực quan hóa:** Giao diện cập nhật từng bước đi của thuật toán trên bàn cờ bên trái và hiển thị kết quả cuối cùng ở bàn cờ bên phải, giúp người dùng dễ dàng theo dõi và so sánh.
@@ -52,16 +54,15 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 
 ---
 
-## 3. CÁC THUẬT TOÁN ĐÃ TRIỂN KHAI
+## 4. CÁC THUẬT TOÁN ĐÃ TRIỂN KHAI
 
 Mã nguồn đã triển khai một dải rộng các thuật toán, được phân loại rõ ràng và lựa chọn thông qua giao diện người dùng.
 
 ### 3.1. Nhóm Thuật Toán Tìm kiếm Không Có Thông Tin (Uninformed Search)
 
-| Thuật toán | Mục tiêu tìm kiếm | Đặc điểm |
-| :--- | :--- | :--- |
-| **Breadth First Search (BFS)** | Tìm đường đi ngắn nhất (về số bước) | Duyệt qua tất cả các trạng thái ở mỗi độ sâu trước khi đi sâu hơn. |
-| **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
+1.  **Breadth First Search (BFS):** Tìm đường đi ngắn nhất (về số bước). Duyệt qua tất cả các trạng thái ở mỗi độ sâu trước khi đi sâu hơn.
+   ![BFS](./GIF/BFS.gif)
+3.  **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
 | **Uniform Cost Search (UCS)** | Tìm đường đi có **tổng chi phí thấp nhất** | Mở rộng nút có chi phí đường đi `g(n)` thấp nhất từ điểm xuất phát. |
 | **Depth Limited Search (DLS)** | DFS với giới hạn độ sâu | Ngăn chặn việc đi vào các nhánh vô hạn. |
 | **Iterative Deepening Search (IDS)** | Kết hợp DLS với giới hạn độ sâu tăng dần | Hoàn chỉnh và tối ưu về số bước như BFS nhưng tiết kiệm không gian hơn. |
