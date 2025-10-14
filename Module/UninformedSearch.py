@@ -90,7 +90,7 @@ def DFS(self, start_node):
     for i in path:
         self.place_rook(self.left_board_cells, self.change_state(i))
         self.update()
-        self.after(50)
+        self.after(200)
 
 def UCS(self, start_node):
     def cost(positions):
@@ -207,7 +207,7 @@ def DLS(self, start_node):
         self.place_rook(self.left_board_cells, self.change_state(i[0]))
         self.left_label.configure(text=f"Limit: {i[1]}")
         self.update()
-        self.after(50)
+        self.after(200)
 
 def IDS(self, start_node):
     def actions(state):

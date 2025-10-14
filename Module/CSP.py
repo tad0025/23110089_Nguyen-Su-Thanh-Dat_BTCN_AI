@@ -36,7 +36,7 @@ def Backtracking(self, start_node):
     for step in path:
         self.place_rook(self.left_board_cells, self.change_state(step))
         self.update()
-        self.after(50)
+        self.after(200)
 
 def Forward_Checking(self, start_node):
     path = []
@@ -152,4 +152,4 @@ def AC3(self, start_node):
     for step in path:
         self.place_rook(self.left_board_cells, self.change_state(step))
         self.update()
-        self.after(50)
+        self.after(200)

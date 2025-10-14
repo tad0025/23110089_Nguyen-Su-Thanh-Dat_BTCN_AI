@@ -65,7 +65,7 @@ def Greedy(self, start_node):
         self.place_rook(self.left_board_cells, self.change_state(i[1]))
         self.left_label.configure(text="Heuristic: " + str(i[0]))
         self.update()
-        self.after(50)
+        self.after(200)
 
 def A_Star(self, start_node):
     class Node:
@@ -105,7 +105,7 @@ def A_Star(self, start_node):
             path.append((current_node.state, (current_node.cost, current_node.heuristic)))
             self.add_log(str(current_node.state) + " F(n): " + str(current_node.cost+current_node.heuristic))
             if self.is_goal(current_node.state):
-                return self.solution(current_node), current_node, path
+                return current_node, path
             for action, cost, h in actions(current_node.state):
                 child_cost = current_node.cost + cost
                 child_heuristic = h
@@ -124,7 +124,7 @@ def A_Star(self, start_node):
                             heapify(frontier.queue)
                             break
 
-    slt, result, path = run(start_node)
+    result, path = run(start_node)
     if result:
         self.add_log("---Result---\n"+str(result.state) + " F(n): " + str(result.cost+result.heuristic))
         self.place_rook(self.right_board_cells, self.change_state(result.state))

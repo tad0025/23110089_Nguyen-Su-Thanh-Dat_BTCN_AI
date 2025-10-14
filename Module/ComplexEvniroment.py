@@ -57,14 +57,9 @@ def And_Or(self, start_node):
     for i in path:
         self.place_rook(self.left_board_cells, self.change_state(i))
         self.update()
-        self.after(50)
+        self.after(200)
 
 def Partially_Observable(self, start_node):
-    """
-    Tìm kiếm trong môi trường quan sát không đầy đủ.
-    Agent không biết trạng thái thật — chỉ quan sát được một phần môi trường.
-    Giải pháp: duy trì và cập nhật belief state (tập hợp trạng thái có thể có).
-    """
     self.add_log("---Path---")
     self.add_log("Khởi tạo tìm kiếm trong môi trường quan sát không đầy đủ...")
 
@@ -75,10 +70,6 @@ def Partially_Observable(self, start_node):
     path_log = []
 
     def get_possible_observations(state):
-        """
-        Sinh ra các quan sát có thể có — ví dụ: vị trí có thể đặt quân xe
-        Ở đây ta giả định agent chỉ quan sát được hàng hiện tại (row) mình đang đặt.
-        """
         row = len(state)
         if row >= self.n:
             return []
@@ -127,14 +118,10 @@ def Partially_Observable(self, start_node):
     for i in path_log:
         self.place_rook(self.left_board_cells, self.change_state(i))
         self.update()
-        self.after(50)
+        self.after(200)
 
 
 def Belief_State(self, start_node):
-    """
-    Belief-State Search: tìm kiếm trên không gian các belief states.
-    Mỗi belief state là một tập hợp các trạng thái có thể có.
-    """
     self.add_log("---Path---")
     self.add_log("Khởi tạo tìm kiếm theo trạng thái niềm tin (Belief-State Search)...")
 
@@ -145,10 +132,6 @@ def Belief_State(self, start_node):
     path_log = []
 
     def successor_beliefs(belief_state):
-        """
-        Sinh ra các belief states kế tiếp bằng cách thêm 1 quân xe hợp lệ
-        vào tất cả các trạng thái có thể trong belief hiện tại.
-        """
         next_beliefs = set()
         for s in belief_state:
             state = list(s)
@@ -194,4 +177,4 @@ def Belief_State(self, start_node):
     for i in path_log:
         self.place_rook(self.left_board_cells, self.change_state(i))
         self.update()
-        self.after(50)
+        self.after(200)
