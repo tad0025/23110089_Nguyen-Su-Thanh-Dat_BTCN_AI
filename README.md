@@ -153,4 +153,10 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 ### 4.6. Nhóm Môi trường Đối kháng (Game Search Problem)
 
 1. **Minimax**
-2. **Alpha-Beta Pruning**
+   - Minimax được thiết kế cho các trò chơi đối kháng hai người chơi, có tổng bằng không (zero-sum). Nó giả định rằng cả hai người chơi đều chơi tối ưu. Người chơi **MAX** (ta) sẽ cố gắng **tối đa hóa** điểm số của mình, trong khi người chơi **MIN** (đối thủ) sẽ cố gắng **tối thiểu hóa** điểm số của MAX.
+   - Thuật toán xây dựng một cây trò chơi. Nó đi xuống đến các trạng thái kết thúc (lá) để tính giá trị (thắng/thua). Sau đó, nó đi ngược lên, ở mỗi cấp, MAX sẽ chọn nước đi có giá trị cao nhất, và MIN sẽ chọn nước đi có giá trị thấp nhất.
+   ![Minimax](./GIF/Minimax.gif)
+3. **Alpha-Beta Pruning**
+   - Đây là một phiên bản tối ưu hóa của Minimax. Nó giúp giảm đáng kể số lượng nút cần phải duyệt trên cây trò chơi bằng cách **cắt tỉa** các nhánh mà chắc chắn sẽ không ảnh hưởng đến quyết định cuối cùng.
+   - Nó duy trì hai giá trị, **Alpha** (điểm số tốt nhất mà MAX có thể đảm bảo) và **Beta** (điểm số tốt nhất mà MIN có thể đảm bảo). Nếu trong quá trình duyệt, một nhánh có giá trị khiến cho `beta <= alpha`, nhánh đó sẽ bị cắt tỉa vì người chơi đối diện sẽ không bao giờ để cho tình huống đó xảy ra.
+   ![Alpha_Beta](./GIF/Alpha_Beta.gif)
