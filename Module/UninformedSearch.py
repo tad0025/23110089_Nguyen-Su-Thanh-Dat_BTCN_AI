@@ -18,7 +18,7 @@ def BFS(self, start_node):
     def run(start_node):
         path = [[]]; self.add_log("---Path---\n[]")
         if self.is_goal(start_node):
-            return start_node.state, path
+            return start_node, path
         frontier = deque([start_node])
         explored = {tuple(map(tuple, start_node))}
         while True:
@@ -63,7 +63,7 @@ def DFS(self, start_node):
     def run(start_node):
         path = [[]]; self.add_log("---Path---\n[]")
         if self.is_goal(start_node):
-            return start_node.state, path
+            return start_node, path
         frontier = deque([start_node])
         explored = {tuple(map(tuple, start_node))}
         while True:

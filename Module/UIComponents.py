@@ -2,6 +2,8 @@ import customtkinter as ctk
 from Module.UninformedSearch import *
 from Module.InformedSearch import *
 from Module.LocalSearch import *
+from Module.ComplexEvniroment import *
+from Module.CSP import *
 
 ctk.set_appearance_mode("light")  
 ctk.set_default_color_theme("blue")
@@ -23,8 +25,12 @@ algorithms_func = {
     "Local Search --- Simulated Annealing": Simulated_Annealing,
     "Local Search --- Genetic Algorithm": Genetic_Algorithm,
     "Local Search --- Beam Search": Beam,
-    # "Complex Environment Search --- DFS_And_Or",
-    # "Complex Environment Search --- Belief_State_Search",
+    "Complex Environment Search --- And Or Search": And_Or,
+    "Complex Environment Search --- Belief State Search": Belief_State,
+    "Complex Environment Search --- Partially Observable Search": Partially_Observable,
+    "CSP --- Backtracking Search": Backtracking,
+    "CSP --- Forward Checking": Forward_Checking,
+    "CSP --- AC-3": AC3
 }
 algorithms = list(algorithms_func.keys())
 

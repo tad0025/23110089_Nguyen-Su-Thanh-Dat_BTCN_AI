@@ -114,6 +114,7 @@ def A_Star(self, start_node):
 
                 if (all(child_node.state != n.state for n in frontier.queue) and (child_state_tuple not in explored)):
                     frontier.put(child_node)
+                    explored[child_state_tuple] = (child_cost, child_heuristic)
                 elif (any(child_node.state == n.state for n in frontier.queue) and child_cost+child_heuristic < sum(explored[child_state_tuple])):
                     explored[child_state_tuple] = (child_cost, child_heuristic)
                     # frontier.put(child_node)
