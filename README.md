@@ -58,23 +58,23 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 
 Mã nguồn đã triển khai một dải rộng các thuật toán, được phân loại rõ ràng và lựa chọn thông qua giao diện người dùng.
 
-### 3.1. Nhóm Thuật Toán Tìm kiếm Không Có Thông Tin (Uninformed Search)
+### 4.1. Nhóm Thuật Toán Tìm kiếm Không Có Thông Tin (Uninformed Search)
 
 1.  **Breadth First Search (BFS):** Tìm đường đi ngắn nhất (về số bước). Duyệt qua tất cả các trạng thái ở mỗi độ sâu trước khi đi sâu hơn.
    ![BFS](./GIF/BFS.gif)
-3.  **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
+2.  **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
 | **Uniform Cost Search (UCS)** | Tìm đường đi có **tổng chi phí thấp nhất** | Mở rộng nút có chi phí đường đi `g(n)` thấp nhất từ điểm xuất phát. |
 | **Depth Limited Search (DLS)** | DFS với giới hạn độ sâu | Ngăn chặn việc đi vào các nhánh vô hạn. |
 | **Iterative Deepening Search (IDS)** | Kết hợp DLS với giới hạn độ sâu tăng dần | Hoàn chỉnh và tối ưu về số bước như BFS nhưng tiết kiệm không gian hơn. |
 
-### 3.2. Nhóm Thuật toán Tìm kiếm có Thông tin (Informed Search)
+### 4.2. Nhóm Thuật toán Tìm kiếm có Thông tin (Informed Search)
 
 | Thuật toán | Hàm Heuristic (`h(n)`) | Hàm Đánh giá |
 | :--- | :--- | :--- |
 | **Greedy Search** | Ước tính chi phí từ trạng thái hiện tại đến đích. | `f(n) = h(n)` |
 | **A\* Search** | Ước tính chi phí từ trạng thái hiện tại đến đích. | `f(n) = g(n) + h(n)` (với `g(n)` là chi phí từ đầu đến hiện tại) |
 
-### 3.3. Nhóm Thuật toán Tìm kiếm Cục bộ (Local Search)
+### 4.3. Nhóm Thuật toán Tìm kiếm Cục bộ (Local Search)
 
 Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh và cố gắng cải thiện nó.
 
@@ -85,7 +85,7 @@ Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh v
 | **Genetic Algorithm** | Thuật toán tiến hóa: sử dụng các phép lai (crossover) và đột biến (mutation) để tiến hóa một quần thể các lời giải. |
 | **Beam Search** | Biến thể của BFS, chỉ giữ lại `k` trạng thái tốt nhất ở mỗi bước để khám phá tiếp. |
 
-### 3.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
+### 4.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
 
 | Thuật toán | Kỹ thuật áp dụng | Ràng buộc chính |
 | :--- | :--- | :--- |
@@ -93,7 +93,7 @@ Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh v
 | **Forward Checking** | Cải tiến Backtracking: Sau khi gán biến, loại bỏ các giá trị không tương thích khỏi miền của các biến chưa được gán. | Mỗi quân Xe phải ở một cột khác nhau. |
 | **AC-3 (Arc Consistency 3)** | Áp dụng kỹ thuật nhất quán cung để lọc miền giá trị của các biến trước và trong khi tìm kiếm để giảm không gian tìm kiếm. | Mỗi quân Xe phải ở một cột khác nhau. |
 
-### 3.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
+### 4.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
 
 | Thuật toán | Loại môi trường | Mục tiêu |
 | :--- | :--- | :--- |
@@ -101,7 +101,7 @@ Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh v
 | **Belief State Search** | Môi trường không quan sát được hoàn toàn (Partially Observable) | Duy trì một tập hợp các trạng thái có thể (belief state) và tìm kiếm trên không gian của các belief state này. |
 | **Partially Observable Search** | Tương tự Belief State, tập trung vào việc cập nhật belief state dựa trên các quan sát. | Tìm kiếm một chuỗi hành động dẫn đến trạng thái đích. |
 
-### 3.6. Nhóm Môi trường Đối kháng (Game Search)
+### 4.6. Nhóm Môi trường Đối kháng (Game Search)
 
 | Thuật toán | Loại môi trường | Mục tiêu |
 | :--- | :--- | :--- |
