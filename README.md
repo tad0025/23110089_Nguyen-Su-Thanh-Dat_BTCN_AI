@@ -97,10 +97,25 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 
 ### 4.3. Nhóm Thuật toán Tìm kiếm Cục bộ (Local Search)
 
+*Lưu ý: Các thuật toán này bắt đầu với một trạng thái hoàn chỉnh (đặt đủ N quân xe) và cố gắng cải thiện nó thay vì xây dựng từ đầu.*
+
 1. **Hill Climbing**
-2. **Simulated Annealing**
-3. **Genetic Algorithm**
-4. **Beam Search**
+   - Thuật toán bắt đầu với một lời giải ngẫu nhiên. Sau đó, nó liên tục di chuyển đến trạng thái "láng giềng" tốt hơn (có heuristic thấp hơn - ít cặp quân xe ăn nhau hơn). Nó sẽ dừng lại khi không có láng giềng nào tốt hơn.
+   - Tại mỗi bước, nó xem xét tất cả các trạng thái láng giềng (bằng cách di chuyển một quân xe sang một ô khác trong cùng một hàng) và chọn trạng thái có heuristic tốt nhất. Nhược điểm là dễ bị "mắc kẹt" ở các cực tiểu cục bộ (local minima).
+   ![Hill_Climbing](./GIF/Hill_Climbing.gif)
+3. **Simulated Annealing**
+   - Đây là một phiên bản cải tiến của Hill Climbing. Để tránh bị kẹt ở cực tiểu cục bộ, nó cho phép thỉnh thoảng di chuyển đến một trạng thái **tệ hơn** với một xác suất nhất định. Xác suất này cao lúc đầu ("nhiệt độ" cao) và giảm dần theo thời gian.
+   - Nó chọn một láng giềng ngẫu nhiên. Nếu láng giềng tốt hơn, nó sẽ di chuyển. Nếu tệ hơn, nó vẫn có thể di chuyển dựa trên một xác suất `exp((current_h - next_h) / temperature)`. "Nhiệt độ" giảm dần giúp thuật toán hội tụ về một giải pháp tốt.
+   ![Simulated_Annealing](./GIF/Simulated_Annealing.gif)
+5. **Genetic Algorithm**
+   - Thuật toán này mô phỏng quá trình tiến hóa tự nhiên. Nó duy trì một "quần thể" gồm nhiều lời giải. Qua các "thế hệ", các lời giải tốt nhất sẽ được "chọn lọc", "lai ghép" (crossover) và "đột biến" (mutation) để tạo ra thế hệ mới tốt hơn.
+      * **Hoạt động:**
+          * **Chọn lọc:** Chọn các cá thể "khỏe mạnh" (heuristic thấp).
+          * **Lai ghép:** Kết hợp hai cá thể cha mẹ để tạo ra con cái.
+          * **Đột biến:** Thay đổi ngẫu nhiên một phần nhỏ của cá thể để tạo sự đa dạng.
+            Quá trình này lặp lại cho đến khi tìm được lời giải tối ưu hoặc đạt đến số thế hệ tối đa.
+   ![Genetic_Algorithm](./GIF/Genetic_Algorithm.gif)
+7. **Beam Search**
 
 ### 4.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
 
