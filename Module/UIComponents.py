@@ -4,6 +4,7 @@ from Module.InformedSearch import *
 from Module.LocalSearch import *
 from Module.ComplexEvniroment import *
 from Module.CSP import *
+from Module.GSP import *
 
 ctk.set_appearance_mode("light")  
 ctk.set_default_color_theme("blue")
@@ -30,7 +31,9 @@ algorithms_func = {
     "Complex Environment Search --- Partially Observable Search": Partially_Observable,
     "CSP --- Backtracking Search": Backtracking,
     "CSP --- Forward Checking": Forward_Checking,
-    "CSP --- AC-3": AC3
+    "CSP --- AC-3": AC3,
+    "GSP --- Minimax": Minimax,
+    "GSP --- Alpha-Beta": Alpha_Beta
 }
 algorithms = list(algorithms_func.keys())
 

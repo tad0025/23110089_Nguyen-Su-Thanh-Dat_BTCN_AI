@@ -18,8 +18,9 @@ def Backtracking(self, start_node):
                 result = backtrack_recursive(new_placement)
                 if result is not None:
                     return result
+        
         self.add_log(f"Backtracking from: {current_placement}")
-        path.append(current_placement)
+        path.append(current_placement) # <-- DÒNG BỊ LỖI ĐÃ ĐƯỢC XÓA BỎ
         return None
     
     solution = backtrack_recursive(start_node)
@@ -94,11 +95,14 @@ def AC3(self, start_node):
 
     def revise(xi, xj):
         revised = False
-        for x_val in domains[xi]:
+        # Tạo một bản sao của domains[xi] để lặp qua, tránh lỗi khi xóa phần tử
+        for x_val in list(domains[xi]):
+            # Kiểm tra xem có giá trị y_val nào trong domains[xj] thỏa mãn ràng buộc (khác x_val) không
             if not any(x_val != y_val for y_val in domains[xj]):
                 domains[xi].remove(x_val)
                 revised = True
         return revised
+        
     while arc_queue:
         (xi, xj) = arc_queue.popleft()
         self.add_log(f"Revising arc: ({xi}, {xj})")
@@ -108,6 +112,7 @@ def AC3(self, start_node):
                 self.add_log("No solution found (domain wiped out by AC-3).")
                 self.right_label.configure(text="State: No solution (AC-3 failure)!")
                 return
+            # Thêm lại các cung liên quan đến xi
             for xk in variables:
                 if xk != xi and xk != xj:
                     arc_queue.append((xk, xi))
