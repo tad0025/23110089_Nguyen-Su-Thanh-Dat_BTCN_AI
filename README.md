@@ -177,4 +177,4 @@ Dự án đã thành công trong việc triển khai và trực quan hóa một 
 * **Trực quan hóa là một công cụ học tập mạnh mẽ:** Giao diện đồ họa và hệ thống ghi log chi tiết đã chứng tỏ vai trò quan trọng trong việc làm cho các khái niệm AI trừu tượng trở nên dễ hiểu và sinh động hơn.
 Nhìn chung, dự án này là một bài tập thực hành quý báu, không chỉ củng cố kiến thức nền tảng về Trí tuệ Nhân tạo mà còn phát triển kỹ năng lập trình, giải quyết vấn đề và tư duy logic.
 
-## Cuối cùng em xin cảm ơn Thầy/Cô/Các anh chị đã xem qua bài làm của em. Mến chúc Thầy/Cô/Các anh chị sức khỏe và thành công!
+# Cuối cùng em xin cảm ơn Thầy/Cô/Các anh chị đã xem qua bài làm của em. Mến chúc Thầy/Cô/Các anh chị sức khỏe và thành công!
