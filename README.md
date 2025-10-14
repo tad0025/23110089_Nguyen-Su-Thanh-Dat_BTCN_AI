@@ -76,9 +76,13 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
   - Thuật toán sử dụng một hàng đợi ưu tiên (Priority Queue) để luôn chọn trạng thái có tổng chi phí g(n) nhỏ nhất để xét duyệt tiếp theo. Điều này đảm bảo rằng đường đi tìm được (nếu có) sẽ là đường đi có tổng chi phí thấp nhất.
     ![UCS](./GIF/UCS.gif)
 4. **Depth Limited Search (DLS)**
-   * **Ý tưởng:** DLS là một biến thể của DFS, nhưng có thêm một tham số là **giới hạn độ sâu (limit)**. Nó sẽ thực hiện tìm kiếm sâu cho đến khi đạt đến giới hạn này. Nếu không tìm thấy lời giải trong giới hạn đó, nó sẽ dừng lại.
-* **Hoạt động:** Thuật toán sử dụng đệ quy để duyệt sâu. Nếu độ sâu hiện tại bằng `limit`, nó sẽ ngừng nhánh đó lại. Điều này giúp ngăn chặn việc DFS đi vào các nhánh vô hạn trong những bài toán phức tạp hơn. Trong bài toán N-Rooks, giới hạn được đặt bằng N.
+  - DLS là một biến thể của DFS, nhưng có thêm một tham số là **giới hạn độ sâu (limit)**. Nó sẽ thực hiện tìm kiếm sâu cho đến khi đạt đến giới hạn này. Nếu không tìm thấy lời giải trong giới hạn đó, nó sẽ dừng lại.
+  - Thuật toán sử dụng đệ quy để duyệt sâu. Nếu độ sâu hiện tại bằng `limit`, nó sẽ ngừng nhánh đó lại. Điều này giúp ngăn chặn việc DFS đi vào các nhánh vô hạn trong những bài toán phức tạp hơn. Trong bài toán N-Rooks, giới hạn được đặt bằng N.
+    ![DLS](./GIF/DLS.gif)
 5. **Iterative Deepening Search (IDS)**
+  - IDS là sự kết hợp thông minh giữa BFS và DFS. Nó thực hiện một loạt các cuộc gọi DLS với giới hạn độ sâu tăng dần (0, 1, 2, ..., N).
+  - Nó bắt đầu bằng cách tìm kiếm ở độ sâu 0, sau đó là 1, rồi 2, và cứ thế tiếp tục. Bằng cách này, nó vừa có được ưu điểm về bộ nhớ của DFS (vì mỗi lần chỉ duyệt sâu một nhánh), vừa đảm bảo tính hoàn chỉnh và tối ưu về số bước như BFS (vì nó sẽ tìm thấy lời giải ở độ sâu nông nhất trước).
+    ![IDS](./GIF/IDS.gif)
 
 ### 4.2. Nhóm Thuật toán Tìm kiếm có Thông tin (Informed Search)
 
