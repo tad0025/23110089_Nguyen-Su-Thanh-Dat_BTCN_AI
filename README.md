@@ -52,6 +52,49 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 * **Logging:** Mọi hành động, từ việc thử một trạng thái mới, quay lui, đến cắt tỉa (pruning), đều được ghi lại chi tiết trong ô log, cung cấp cái nhìn sâu sắc về cách hoạt động của từng thuật toán.
 * **Chương trình có thể nhập bàn cờ $N \times N$ với N từ 1 -> 8. Vì nhanh và trực quan hơn thì em xin phép chèn ảnh động GIF ở bàn cờ $5 \times 5$, nếu thuật toán cho phép em sẽ quay ở bàn cờ $8 \times 8$**
 
+### 3.3. Cấu trúc Thư mục Dự án
+
+Dự án được tổ chức một cách khoa học và module hóa để dễ dàng quản lý, bảo trì và mở rộng.
+
+```
+/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI
+│
+├── GIF/
+│   ├── AC3.gif
+│   ├── AStar.gif
+│   └── ... (chứa tất cả các file GIF minh họa)
+│
+├── Module/
+│   ├── UIComponents.py
+│   ├── UninformedSearch.py
+│   ├── InformedSearch.py
+│   ├── LocalSearch.py
+│   ├── CSP.py
+│   ├── ComplexEvniroment.py
+│   └── GSP.py
+│
+├── Main.py
+└── README.md
+```
+
+**Giải thích chức năng các thành phần:**
+  * **`Main.py` (File chính):**
+      * Đây là file **điểm vào (entry point)** của toàn bộ chương trình. Khi bạn chạy file này, ứng dụng sẽ được khởi động. Nhiệm vụ chính của nó là tạo ra cửa sổ giao diện chính và bắt đầu vòng lặp sự kiện của ứng dụng.
+  * **Thư mục `Module/` (Chứa các module):**
+      * Thư mục này là **"bộ não"** của dự án, chứa toàn bộ mã nguồn xử lý logic. Việc chia nhỏ code thành các module giúp cho dự án trở nên gọn gàng, dễ đọc và dễ nâng cấp hơn.
+      * **`UIComponents.py` (Module Giao diện):** File này chịu trách nhiệm xây dựng và quản lý tất cả các thành phần **giao diện người dùng (UI)**, chẳng hạn như cửa sổ chính, các nút bấm, combobox chọn thuật toán, hai bàn cờ trực quan, và ô hiển thị log. Nó sử dụng thư viện `customtkinter` để tạo ra giao diện.
+      * **Các file thuật toán:** Các file còn lại trong thư mục `Module/` chứa mã nguồn triển khai các **thuật toán** AI, được phân loại rõ ràng theo từng nhóm để dễ quản lý:
+          * `UninformedSearch.py`: Các thuật toán tìm kiếm không có thông tin.
+          * `InformedSearch.py`: Các thuật toán tìm kiếm có thông tin.
+          * `LocalSearch.py`: Các thuật toán tìm kiếm cục bộ.
+          * `CSP.py`: Các thuật toán cho bài toán thỏa mãn ràng buộc.
+          * `ComplexEvniroment.py`: Các thuật toán cho môi trường phức tạp.
+          * `GSP.py`: Các thuật toán cho môi trường đối kháng (Game Search).
+  * **Thư mục `GIF/` (Chứa các file .gif):**
+      * Thư mục này đơn giản là nơi lưu trữ tất cả các file **ảnh động (GIF)**. Những file này được dùng để minh họa sinh động cách mỗi thuật toán hoạt động và được nhúng vào trong file `README.md`.
+  * **`README.md` (File tài liệu):**
+      * Đây là file tài liệu hướng dẫn của dự án. Nó cung cấp thông tin tổng quan về bài toán, giải thích cấu trúc dự án, và mô tả chi tiết từng thuật toán đã được triển khai, kèm theo các ảnh GIF minh họa.
+
 ---
 
 ## 4. CÁC THUẬT TOÁN ĐÃ TRIỂN KHAI
