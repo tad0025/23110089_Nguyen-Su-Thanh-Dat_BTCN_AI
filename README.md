@@ -113,17 +113,27 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
           * **Chọn lọc:** Chọn các cá thể "khỏe mạnh" (heuristic thấp).
           * **Lai ghép:** Kết hợp hai cá thể cha mẹ để tạo ra con cái.
           * **Đột biến:** Thay đổi ngẫu nhiên một phần nhỏ của cá thể để tạo sự đa dạng.
-            Quá trình này lặp lại cho đến khi tìm được lời giải tối ưu hoặc đạt đến số thế hệ tối đa.
+          * Quá trình này lặp lại cho đến khi tìm được lời giải tối ưu hoặc đạt đến số thế hệ tối đa.
    ![Genetic_Algorithm](./GIF/Genetic_Algorithm.gif)
 7. **Beam Search**
+   - Beam Search là một biến thể của BFS nhưng có giới hạn về bộ nhớ. Thay vì giữ lại tất cả các trạng thái ở mỗi cấp độ, nó chỉ giữ lại `k` trạng thái tốt nhất (gọi là `beam_width`).
+   - Từ `k` trạng thái tốt nhất hiện tại, nó sinh ra tất cả các trạng thái con. Sau đó, từ danh sách các trạng thái con này, nó lại chọn ra `k` trạng thái tốt nhất để tiếp tục cho vòng lặp tiếp theo. Điều này giúp giảm không gian tìm kiếm một cách đáng kể.
+   ![Beam](./GIF/Beam.gif)
 
 ### 4.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
 
-| Thuật toán | Kỹ thuật áp dụng | Ràng buộc chính |
-| :--- | :--- | :--- |
-| **Backtracking Search** | Gán giá trị lần lượt cho từng biến (hàng) và quay lui nếu vi phạm ràng buộc. | Mỗi quân Xe phải ở một cột khác nhau. |
-| **Forward Checking** | Cải tiến Backtracking: Sau khi gán biến, loại bỏ các giá trị không tương thích khỏi miền của các biến chưa được gán. | Mỗi quân Xe phải ở một cột khác nhau. |
-| **AC-3 (Arc Consistency 3)** | Áp dụng kỹ thuật nhất quán cung để lọc miền giá trị của các biến trước và trong khi tìm kiếm để giảm không gian tìm kiếm. | Mỗi quân Xe phải ở một cột khác nhau. |
+1. **Backtracking Search**
+   - Đây là một phương pháp duyệt sâu (DFS) cơ bản cho CSP. Nó gán giá trị (vị trí cột) cho từng biến (hàng) một cách tuần tự. Nếu một phép gán vi phạm ràng buộc (đặt quân xe vào cột đã có), nó sẽ "quay lui" (backtrack) và thử một giá trị khác.
+   - Thuật toán xây dựng lời giải từng bước một. Tại mỗi hàng, nó thử đặt quân xe vào từng cột. Nếu hợp lệ, nó đi tiếp đến hàng sau. Nếu không hợp lệ hoặc không thể đi tiếp, nó quay lại hàng trước đó và thử cột khác.
+   ![Backtracking](./GIF/Backtracking.gif)
+3. **Forward Checking**
+   - Đây là một cải tiến của Backtracking. Sau khi gán một giá trị cho một biến (đặt quân xe vào hàng `r`, cột `c`), nó sẽ nhìn về phía trước và loại bỏ tất cả các giá trị không tương thích khỏi "miền giá trị" của các biến chưa được gán. Cụ thể, nó sẽ loại bỏ cột `c` khỏi các lựa chọn của tất cả các hàng còn lại.
+   - Khi đặt một quân xe, thuật toán sẽ cập nhật "domain" (các cột có thể đặt) của các hàng tương lai. Nếu bất kỳ hàng nào trong tương lai hết lựa chọn (domain rỗng), thuật toán biết ngay nhánh này sẽ thất bại và quay lui sớm hơn, giúp giảm không gian tìm kiếm.
+   ![Forward_Checking](./GIF/Forward_Checking.gif)
+5. **AC-3 (Arc Consistency 3)**
+   - Thuật toán AC-3 là một bước tiền xử lý (hoặc thực hiện xen kẽ) để làm cho bài toán "nhất quán cung". Nó xem xét các cặp biến (hàng) và loại bỏ các giá trị (cột) khỏi miền của chúng nếu không tìm thấy giá trị tương ứng ở biến kia thỏa mãn ràng buộc.
+   - Thuật toán duy trì một hàng đợi chứa các "cung" (cặp biến). Với mỗi cung `(Xi, Xj)`, nó cố gắng đảm bảo rằng với mỗi giá trị trong miền của `Xi`, có ít nhất một giá trị trong miền của `Xj` thỏa mãn ràng buộc. Nếu không, giá trị đó sẽ bị loại bỏ. Quá trình này giúp lọc bớt miền giá trị trước khi bắt đầu Backtracking, làm cho việc tìm kiếm hiệu quả hơn.
+   [AC3](./GIF/AC3.gif)
 
 ### 4.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
 
