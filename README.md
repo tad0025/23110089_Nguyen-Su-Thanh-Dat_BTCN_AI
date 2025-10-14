@@ -133,19 +133,15 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 5. **AC-3 (Arc Consistency 3)**
    - Thuật toán AC-3 là một bước tiền xử lý (hoặc thực hiện xen kẽ) để làm cho bài toán "nhất quán cung". Nó xem xét các cặp biến (hàng) và loại bỏ các giá trị (cột) khỏi miền của chúng nếu không tìm thấy giá trị tương ứng ở biến kia thỏa mãn ràng buộc.
    - Thuật toán duy trì một hàng đợi chứa các "cung" (cặp biến). Với mỗi cung `(Xi, Xj)`, nó cố gắng đảm bảo rằng với mỗi giá trị trong miền của `Xi`, có ít nhất một giá trị trong miền của `Xj` thỏa mãn ràng buộc. Nếu không, giá trị đó sẽ bị loại bỏ. Quá trình này giúp lọc bớt miền giá trị trước khi bắt đầu Backtracking, làm cho việc tìm kiếm hiệu quả hơn.
-   [AC3](./GIF/AC3.gif)
+   ![AC3](./GIF/AC3.gif)
 
 ### 4.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
 
-| Thuật toán | Loại môi trường | Mục tiêu |
-| :--- | :--- | :--- |
-| **And-Or Search** | Môi trường không tất định (Non-deterministic) | Tìm một kế hoạch (một cây con của không gian trạng thái) đảm bảo đến được đích dù kết quả hành động là gì. |
-| **Belief State Search** | Môi trường không quan sát được hoàn toàn (Partially Observable) | Duy trì một tập hợp các trạng thái có thể (belief state) và tìm kiếm trên không gian của các belief state này. |
-| **Partially Observable Search** | Tương tự Belief State, tập trung vào việc cập nhật belief state dựa trên các quan sát. | Tìm kiếm một chuỗi hành động dẫn đến trạng thái đích. |
+1. **And-Or Search**
+2. **Belief State Search**
+3. **Partially Observable Search**
 
 ### 4.6. Nhóm Môi trường Đối kháng (Game Search)
 
-| Thuật toán | Loại môi trường | Mục tiêu |
-| :--- | :--- | :--- |
-| **Minimax** | Môi trường đối kháng (2 người chơi, zero-sum) | Lựa chọn nước đi để **tối đa hóa** giá trị ở trạng thái cuối cùng, giả định đối thủ sẽ **tối thiểu hóa** giá trị đó. |
-| **Alpha-Beta Pruning** | Cải tiến Minimax | Cắt tỉa các nhánh của cây tìm kiếm mà chắc chắn sẽ không được chọn, giúp tăng tốc độ đáng kể. |
+1. **Minimax**
+2. **Alpha-Beta Pruning**
