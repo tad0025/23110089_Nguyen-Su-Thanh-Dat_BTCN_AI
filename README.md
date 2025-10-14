@@ -62,7 +62,23 @@ Dự án được tổ chức một cách khoa học và module hóa để dễ 
 ├── GIF/
 │   ├── AC3.gif
 │   ├── AStar.gif
-│   └── ... (chứa tất cả các file GIF minh họa)
+│   ├── Alpha_Beta.gif
+│   ├── And_Or.gif
+│   ├── BFS.gif
+│   ├── Backtracking.gif
+│   ├── Beam.gif
+│   ├── Belief_State.gif
+│   ├── DFS.gif
+│   ├── DLS.gif
+│   ├── Forward_Checking.gif
+│   ├── Genetic_Algorithm.gif
+│   ├── Greedy.gif
+│   ├── Hill_Climbing.gif
+│   ├── IDS.gif
+│   ├── Minimax.gif
+│   ├── Partially_Observable.gif
+│   ├── Simulated_Annealing.gif
+│   └── UCS.gif
 │
 ├── Module/
 │   ├── UIComponents.py
