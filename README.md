@@ -7,6 +7,7 @@
 * **Họ và tên:** Nguyễn Sư Thành Đạt
 * **Mã số sinh viên:** 23110089
 * **Môn học:** Trí tuệ Nhân tạo
+* **Lớp:** ARIN330585_05CLC Buổi: Sáng thứ 2 - thứ 6, tiết 1 - 4
 
 ---
 
