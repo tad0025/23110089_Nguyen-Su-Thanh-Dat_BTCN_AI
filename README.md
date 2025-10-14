@@ -86,21 +86,21 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 
 ### 4.2. Nhóm Thuật toán Tìm kiếm có Thông tin (Informed Search)
 
-| Thuật toán | Hàm Heuristic (`h(n)`) | Hàm Đánh giá |
-| :--- | :--- | :--- |
-| **Greedy Search** | Ước tính chi phí từ trạng thái hiện tại đến đích. | `f(n) = h(n)` |
-| **A\* Search** | Ước tính chi phí từ trạng thái hiện tại đến đích. | `f(n) = g(n) + h(n)` (với `g(n)` là chi phí từ đầu đến hiện tại) |
+1. **Greedy Search**
+   - Greedy Search là một thuật toán "tham lam". Tại mỗi bước, nó luôn chọn hành động có vẻ tốt nhất tại thời điểm đó, dựa trên một hàm **heuristic (`h(n)`)**. Hàm heuristic ước tính chi phí từ trạng thái hiện tại đến đích. Trong mã nguồn, `h(n) = abs(N - x - 1) + abs(N - y - 1)`, ước tính khoảng cách Manhattan đến góc dưới bên phải.
+   - Tương tự UCS, nó dùng hàng đợi ưu tiên nhưng chỉ sắp xếp dựa trên giá trị heuristic `h(n)`. Nó bỏ qua chi phí đã đi (`g(n)`), do đó có thể tìm ra lời giải nhanh nhưng không đảm bảo là tối ưu nhất.
+   ![Greedy](./GIF/Greedy.gif)
+2. **A\* Search**
+   - A\* là sự kết hợp của UCS và Greedy Search. Nó đánh giá các trạng thái dựa trên tổng của chi phí thực tế từ đầu đến hiện tại (`g(n)`) và chi phí ước tính đến đích (`h(n)`). Hàm đánh giá là `f(n) = g(n) + h(n)`.
+   - Nó sử dụng hàng đợi ưu tiên để luôn chọn trạng thái có `f(n)` thấp nhất. Sự kết hợp này giúp A\* vừa có định hướng (nhờ `h(n)`), vừa cân nhắc chi phí đã đi (nhờ `g(n)`), đảm bảo tìm ra lời giải có tổng chi phí thấp nhất nếu hàm heuristic là hợp lệ (admissible).
+   ![AStar](./GIF/AStar.gif)
 
 ### 4.3. Nhóm Thuật toán Tìm kiếm Cục bộ (Local Search)
 
-Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh và cố gắng cải thiện nó.
-
-| Thuật toán | Mô tả |
-| :--- | :--- |
-| **Hill Climbing** | Luôn di chuyển đến trạng thái lân cận tốt hơn (heuristic thấp hơn). Dễ bị kẹt ở cực tiểu cục bộ. |
-| **Simulated Annealing** | Cải tiến Hill Climbing, cho phép chấp nhận các bước đi tồi hơn với một xác suất nhất định để thoát khỏi cực tiểu cục bộ. |
-| **Genetic Algorithm** | Thuật toán tiến hóa: sử dụng các phép lai (crossover) và đột biến (mutation) để tiến hóa một quần thể các lời giải. |
-| **Beam Search** | Biến thể của BFS, chỉ giữ lại `k` trạng thái tốt nhất ở mỗi bước để khám phá tiếp. |
+1. **Hill Climbing**
+2. **Simulated Annealing**
+3. **Genetic Algorithm**
+4. **Beam Search**
 
 ### 4.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
 
