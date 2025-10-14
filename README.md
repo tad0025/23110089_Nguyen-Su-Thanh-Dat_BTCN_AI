@@ -68,12 +68,13 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
   * ... và cứ thế tiếp tục.
 - Cách tiếp cận này đảm bảo rằng nếu có lời giải, BFS sẽ tìm ra lời giải có số bước đi (số quân xe) ít nhất.
    ![BFS](./GIF/BFS.gif)
-2.  **Depth First Search (DFS):** Trái ngược với BFS, thuật toán DFS thực hiện tìm kiếm theo chiều sâu. Tức là, nó sẽ ưu tiên đi sâu vào một nhánh của cây tìm kiếm cho đến khi nào không thể đi tiếp được nữa (đạt đến "lá" hoặc trạng thái cụt) rồi mới quay lui (backtrack) để thử một nhánh khác. Trong bài toán N-Rooks, điều này có nghĩa là thuật toán sẽ cố gắng đặt quân xe thứ nhất, rồi thứ hai, thứ ba,... một cách nhanh nhất có thể theo một hướng duy nhất. Nếu việc đặt quân xe tiếp theo bị chặn, nó sẽ quay lại bước trước đó và thử một vị trí khác. Cách tiếp cận này thường tìm ra lời giải rất nhanh, nhưng không đảm bảo lời giải đó là tối ưu nhất (trong các bài toán có chi phí).
+2.  **Depth First Search (DFS):**
+  - Trái ngược với BFS, thuật toán DFS thực hiện tìm kiếm theo chiều sâu. Tức là, nó sẽ ưu tiên đi sâu vào một nhánh của cây tìm kiếm cho đến khi nào không thể đi tiếp được nữa (đạt đến "lá" hoặc trạng thái cụt) rồi mới quay lui (backtrack) để thử một nhánh khác. Trong bài toán N-Rooks, điều này có nghĩa là thuật toán sẽ cố gắng đặt quân xe thứ nhất, rồi thứ hai, thứ ba,... một cách nhanh nhất có thể theo một hướng duy nhất. Nếu việc đặt quân xe tiếp theo bị chặn, nó sẽ quay lại bước trước đó và thử một vị trí khác. Cách tiếp cận này thường tìm ra lời giải rất nhanh, nhưng không đảm bảo lời giải đó là tối ưu nhất (trong các bài toán có chi phí).
     ![DFS](./GIF/DFS.gif)
 3. **Uniform Cost Search (UCS)**
-    * **Ý tưởng: UCS mở rộng các trạng thái dựa trên chi phí thấp nhất tính từ trạng thái ban đầu (g(n)). Nó không quan tâm đến "số bước đi" như BFS, mà quan tâm đến "tổng trọng số" của đường đi. Trong bài toán này, chi phí được định nghĩa là cost = 2 * (self.n - len(positions)) + 1, tức là ưu tiên các bước đi giúp giảm thiểu số ô bị chặn.
-    * Hoạt động: Thuật toán sử dụng một hàng đợi ưu tiên (Priority Queue) để luôn chọn trạng thái có tổng chi phí g(n) nhỏ nhất để xét duyệt tiếp theo. Điều này đảm bảo rằng đường đi tìm được (nếu có) sẽ là đường đi có tổng chi phí thấp nhất.
-    ![UCS](./GIF/UCS.gif)
+    - UCS mở rộng các trạng thái dựa trên chi phí thấp nhất tính từ trạng thái ban đầu (g(n)). Nó không quan tâm đến "số bước đi" như BFS, mà quan tâm đến "tổng trọng số" của đường đi. Trong bài toán này, chi phí được định nghĩa là cost = 2 * (self.n - len(positions)) + 1, tức là ưu tiên các bước đi giúp giảm thiểu số ô bị chặn.
+    - Thuật toán sử dụng một hàng đợi ưu tiên (Priority Queue) để luôn chọn trạng thái có tổng chi phí g(n) nhỏ nhất để xét duyệt tiếp theo. Điều này đảm bảo rằng đường đi tìm được (nếu có) sẽ là đường đi có tổng chi phí thấp nhất.
+    - ![UCS](./GIF/UCS.gif)
 4. **Depth Limited Search (DLS)**
    * **Ý tưởng:** DLS là một biến thể của DFS, nhưng có thêm một tham số là **giới hạn độ sâu (limit)**. Nó sẽ thực hiện tìm kiếm sâu cho đến khi đạt đến giới hạn này. Nếu không tìm thấy lời giải trong giới hạn đó, nó sẽ dừng lại.
 * **Hoạt động:** Thuật toán sử dụng đệ quy để duyệt sâu. Nếu độ sâu hiện tại bằng `limit`, nó sẽ ngừng nhánh đó lại. Điều này giúp ngăn chặn việc DFS đi vào các nhánh vô hạn trong những bài toán phức tạp hơn. Trong bài toán N-Rooks, giới hạn được đặt bằng N.
