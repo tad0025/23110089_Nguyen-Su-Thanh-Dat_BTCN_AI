@@ -60,9 +60,15 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 
 ### 4.1. Nhóm Thuật Toán Tìm kiếm Không Có Thông Tin (Uninformed Search)
 
-1.  **Breadth First Search (BFS):** Tìm đường đi ngắn nhất (về số bước). Duyệt qua tất cả các trạng thái ở mỗi độ sâu trước khi đi sâu hơn.
+1.  **Breadth First Search (BFS):**
+Thuật toán BFS thực hiện tìm kiếm theo chiều rộng, tức là nó sẽ duyệt qua tất cả các trạng thái (cách đặt quân xe) ở cùng một "cấp độ" trước khi đi xuống cấp độ sâu hơn. Trong bài toán này, "cấp độ" có thể hiểu là số lượng quân xe đã được đặt lên bàn cờ.
+  * **Cấp 0:** Bàn cờ trống `[]`.
+  * **Cấp 1:** Tất cả các trạng thái có 1 quân xe, ví dụ: `[(0, 0)]`, `[(0, 1)]`,...
+  * **Cấp 2:** Tất cả các trạng thái có 2 quân xe, ví dụ: `[(0, 0), (1, 1)]`, `[(0, 0), (1, 2)]`,...
+  * ... và cứ thế tiếp tục.
+Cách tiếp cận này đảm bảo rằng nếu có lời giải, BFS sẽ tìm ra lời giải có số bước đi (số quân xe) ít nhất.
    ![BFS](./GIF/BFS.gif)
-2.  **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
+3.  **Depth First Search (DFS)** | Tìm lời giải nhanh (không đảm bảo tối ưu) | Ưu tiên đi sâu vào một nhánh của cây tìm kiếm. |
 | **Uniform Cost Search (UCS)** | Tìm đường đi có **tổng chi phí thấp nhất** | Mở rộng nút có chi phí đường đi `g(n)` thấp nhất từ điểm xuất phát. |
 | **Depth Limited Search (DLS)** | DFS với giới hạn độ sâu | Ngăn chặn việc đi vào các nhánh vô hạn. |
 | **Iterative Deepening Search (IDS)** | Kết hợp DLS với giới hạn độ sâu tăng dần | Hoàn chỉnh và tối ưu về số bước như BFS nhưng tiết kiệm không gian hơn. |
