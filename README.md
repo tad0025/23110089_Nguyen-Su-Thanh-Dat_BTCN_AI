@@ -28,9 +28,32 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 
 ---
 
-## 3. CÁC THUẬT TOÁN TRÍ TUỆ NHÂN TẠO ĐÃ TRIỂN KHAI
+## 3. CẤU TRÚC GIAO DIỆN VÀ CHỨC NĂNG
 
-Mã nguồn đã triển khai một dải rộng các thuật toán AI, được phân loại rõ ràng và lựa chọn thông qua giao diện người dùng.
+Ứng dụng được xây dựng bằng thư viện `customtkinter` của ngôn ngữ lập trình Python với giao diện hiện đại và trực quan.
+
+1.  **Khung bên Trái:**
+    * **Bảng điều khiển:**
+        * **Combobox:** Cho phép chọn một trong các thuật toán đã triển khai.
+        * **Nút "Giải bài toán":** Bắt đầu thực thi thuật toán đã chọn.
+        * **Nút "Xóa":** Xóa các quân Xe khỏi bàn cờ.
+    * **Bàn cờ "Các bước thực hiện":** Trực quan hóa quá trình tìm kiếm hoặc các bước đi của thuật toán.
+2.  **Khung bên Phải:**
+    * **Tùy chọn bàn cờ:** Cho phép người dùng nhập kích thước bàn cờ N x N (từ 1 đến 8).
+    * **Bảng ghi log:** Hiển thị chi tiết các bước, trạng thái đã duyệt, và kết quả của thuật toán dưới dạng văn bản.
+    * **Bàn cờ "Kết quả cuối cùng":** Hiển thị lời giải cuối cùng mà thuật toán tìm được.
+
+### 4.1. Lưu ý về Mã nguồn và Hiển thị
+
+* **Logic Sinh Trạng thái:** Các thuật toán tìm kiếm truyền thống (Uninformed, Informed, CSP) sinh trạng thái bằng cách đặt quân Xe theo thứ tự từng hàng, giúp giảm không gian tìm kiếm một cách hiệu quả.
+* **Trực quan hóa:** Giao diện cập nhật từng bước đi của thuật toán trên bàn cờ bên trái và hiển thị kết quả cuối cùng ở bàn cờ bên phải, giúp người dùng dễ dàng theo dõi và so sánh.
+* **Logging:** Mọi hành động, từ việc thử một trạng thái mới, quay lui, đến cắt tỉa (pruning), đều được ghi lại chi tiết trong ô log, cung cấp cái nhìn sâu sắc về cách hoạt động của từng thuật toán.
+
+---
+
+## 3. CÁC THUẬT TOÁN ĐÃ TRIỂN KHAI
+
+Mã nguồn đã triển khai một dải rộng các thuật toán, được phân loại rõ ràng và lựa chọn thông qua giao diện người dùng.
 
 ### 3.1. Nhóm Thuật toán Tìm kiếm Mù (Uninformed Search)
 
@@ -82,26 +105,3 @@ Các thuật toán này hoạt động trên một trạng thái hoàn chỉnh v
 | :--- | :--- | :--- |
 | **Minimax** | Môi trường đối kháng (2 người chơi, zero-sum) | Lựa chọn nước đi để **tối đa hóa** giá trị ở trạng thái cuối cùng, giả định đối thủ sẽ **tối thiểu hóa** giá trị đó. |
 | **Alpha-Beta Pruning** | Cải tiến Minimax | Cắt tỉa các nhánh của cây tìm kiếm mà chắc chắn sẽ không được chọn, giúp tăng tốc độ đáng kể. |
-
----
-
-## 4. CẤU TRÚC GIAO DIỆN VÀ CHỨC NĂNG (CustomTkinter GUI)
-
-Ứng dụng được xây dựng bằng thư viện `customtkinter` với giao diện hiện đại và trực quan.
-
-1.  **Khung bên Trái:**
-    * **Bảng điều khiển:**
-        * **Combobox:** Cho phép chọn một trong các thuật toán đã triển khai.
-        * **Nút "Giải bài toán":** Bắt đầu thực thi thuật toán đã chọn.
-        * **Nút "Xóa":** Xóa các quân Xe khỏi bàn cờ.
-    * **Bàn cờ "Các bước thực hiện":** Trực quan hóa quá trình tìm kiếm hoặc các bước đi của thuật toán.
-2.  **Khung bên Phải:**
-    * **Tùy chọn bàn cờ:** Cho phép người dùng nhập kích thước bàn cờ N x N (từ 1 đến 8).
-    * **Bảng ghi log:** Hiển thị chi tiết các bước, trạng thái đã duyệt, và kết quả của thuật toán dưới dạng văn bản.
-    * **Bàn cờ "Kết quả cuối cùng":** Hiển thị lời giải cuối cùng mà thuật toán tìm được.
-
-### 4.1. Lưu ý về Mã nguồn và Hiển thị
-
-* **Logic Sinh Trạng thái:** Các thuật toán tìm kiếm truyền thống (Uninformed, Informed, CSP) sinh trạng thái bằng cách đặt quân Xe theo thứ tự từng hàng, giúp giảm không gian tìm kiếm một cách hiệu quả.
-* **Trực quan hóa:** Giao diện cập nhật từng bước đi của thuật toán trên bàn cờ bên trái và hiển thị kết quả cuối cùng ở bàn cờ bên phải, giúp người dùng dễ dàng theo dõi và so sánh.
-* **Logging:** Mọi hành động, từ việc thử một trạng thái mới, quay lui, đến cắt tỉa (pruning), đều được ghi lại chi tiết trong ô log, cung cấp cái nhìn sâu sắc về cách hoạt động của từng thuật toán.
