@@ -138,10 +138,19 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 ### 4.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
 
 1. **And-Or Search**
-2. **Belief State Search**
-3. **Partially Observable Search**
+   - Thuật toán này được dùng cho các môi trường không tất định, nơi một hành động có thể dẫn đến nhiều kết quả. Nó tìm kiếm một **kế hoạch** (một cây con) thay vì một đường đi duy nhất.
+   - Cây tìm kiếm bao gồm các nút **OR** (nơi chúng ta chọn một hành động) và các nút **AND** (đại diện cho tất cả các kết quả có thể có của một hành động). Một kế hoạch thành công khi nó có thể xử lý tất cả các kết quả ở nút AND và dẫn đến đích. Trong bài toán này, nó được mô phỏng bằng cách coi việc đặt quân xe ở mỗi hàng là một "tiểu vấn đề" phải được giải quyết.
+   ![And_Or](./GIF/And_Or.gif)
+3. **Belief State Search**
+   - Được sử dụng trong các môi trường không quan sát được hoàn toàn, nơi agent không biết chắc mình đang ở trạng thái nào. Agent sẽ duy trì một **"trạng thái niềm tin" (belief state)**, là một tập hợp tất cả các trạng thái có thể xảy ra.
+   - Thuật toán tìm kiếm trên không gian của các belief state. Nó bắt đầu với một belief state ban đầu. Mỗi hành động sẽ chuyển belief state hiện tại thành một belief state kế tiếp, là tập hợp tất cả các trạng thái có thể đạt được từ belief state cũ sau hành động đó. Mục tiêu là tìm một chuỗi hành động dẫn đến một belief state mà trong đó có chứa trạng thái đích.
+   ![Belief_State](./GIF/Belief_State.gif)
+5. **Partially Observable Search**
+   - Tương tự như Belief State Search, thuật toán này cũng giải quyết các bài toán trong môi trường quan sát một phần. Agent sử dụng các **quan sát (observations)** để cập nhật và thu hẹp belief state của mình.
+   - Dựa trên belief state hiện tại, agent thực hiện một hành động, sau đó nhận một quan sát. Quan sát này giúp agent loại bỏ các trạng thái không còn phù hợp khỏi belief state, tạo ra một belief state mới chính xác hơn. Quá trình tìm kiếm là tìm một chuỗi các hành động để đạt được mục tiêu, dựa trên việc cập nhật belief state này.
+   ![Partially_Observable](./GIF/Partially_Observable.gif)
 
-### 4.6. Nhóm Môi trường Đối kháng (Game Search)
+### 4.6. Nhóm Môi trường Đối kháng (Game Search Problem)
 
 1. **Minimax**
 2. **Alpha-Beta Pruning**
