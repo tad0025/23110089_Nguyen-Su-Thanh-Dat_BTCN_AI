@@ -167,8 +167,7 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 
 ### 5.1. Tổng kết
 
-Dự án đã thành công trong việc triển khai và trực quan hóa một loạt các thuật toán Trí tuệ Nhân tạo để giải quyết bài toán N-Rooks kinh điển. Bằng việc xây dựng một giao diện người dùng trực quan bằng `customtkinter`, chương trình không chỉ tìm ra lời giải mà còn cho phép người dùng quan sát, so sánh và hiểu sâu hơn về cách thức hoạt động, ưu và nhược điểm của từng phương pháp.
-Từ các thuật toán tìm kiếm cơ bản như **BFS, DFS** đến các phương pháp phức tạp hơn như **A\***, **Genetic Algorithm**, và **Alpha-Beta Pruning**, mỗi thuật toán đều cho thấy một cách tiếp cận khác nhau để giải quyết vấn đề, thể hiện sự đa dạng và phong phú của các kỹ thuật trong lĩnh vực AI.
+Dự án đã thành công trong việc triển khai và trực quan hóa một loạt các thuật toán Trí tuệ Nhân tạo để giải quyết bài toán N-Rooks kinh điển. Bằng việc xây dựng một giao diện người dùng trực quan bằng `customtkinter`, chương trình không chỉ tìm ra lời giải mà còn cho phép người dùng quan sát, so sánh và hiểu sâu hơn về cách thức hoạt động, ưu và nhược điểm của từng phương pháp. Từ các thuật toán tìm kiếm cơ bản như **BFS, DFS** đến các phương pháp phức tạp hơn như **A\***, **Genetic Algorithm**, và **Alpha-Beta Pruning**, mỗi thuật toán đều cho thấy một cách tiếp cận khác nhau để giải quyết vấn đề, thể hiện sự đa dạng và phong phú của các kỹ thuật trong lĩnh vực AI.
 
 ### 5.2. Bài học rút ra
 
@@ -177,3 +176,5 @@ Từ các thuật toán tìm kiếm cơ bản như **BFS, DFS** đến các phư
 * **Không có thuật toán nào là tốt nhất cho mọi bài toán:** Mỗi nhóm thuật toán có điểm mạnh riêng và phù hợp với các loại vấn đề khác nhau. Local Search hiệu quả cho việc tối ưu hóa, CSP mạnh mẽ trong việc xử lý các ràng buộc, và Game Search là cần thiết cho các môi trường đối kháng.
 * **Trực quan hóa là một công cụ học tập mạnh mẽ:** Giao diện đồ họa và hệ thống ghi log chi tiết đã chứng tỏ vai trò quan trọng trong việc làm cho các khái niệm AI trừu tượng trở nên dễ hiểu và sinh động hơn.
 Nhìn chung, dự án này là một bài tập thực hành quý báu, không chỉ củng cố kiến thức nền tảng về Trí tuệ Nhân tạo mà còn phát triển kỹ năng lập trình, giải quyết vấn đề và tư duy logic.
+
+## Cuối cùng em xin cảm ơn Thầy/Cô/Các anh chị đã xem qua bài làm của em. Mến chúc Thầy/Cô/Các anh chị sức khỏe và thành công!
