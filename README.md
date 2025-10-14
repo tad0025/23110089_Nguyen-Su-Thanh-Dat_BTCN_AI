@@ -160,3 +160,20 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
    - Đây là một phiên bản tối ưu hóa của Minimax. Nó giúp giảm đáng kể số lượng nút cần phải duyệt trên cây trò chơi bằng cách **cắt tỉa** các nhánh mà chắc chắn sẽ không ảnh hưởng đến quyết định cuối cùng.
    - Nó duy trì hai giá trị, **Alpha** (điểm số tốt nhất mà MAX có thể đảm bảo) và **Beta** (điểm số tốt nhất mà MIN có thể đảm bảo). Nếu trong quá trình duyệt, một nhánh có giá trị khiến cho `beta <= alpha`, nhánh đó sẽ bị cắt tỉa vì người chơi đối diện sẽ không bao giờ để cho tình huống đó xảy ra.
    ![Alpha_Beta](./GIF/Alpha_Beta.gif)
+
+---
+
+## 5. KẾT LUẬN VÀ BÀI HỌC KINH NGHIỆM
+
+### 5.1. Tổng kết
+
+Dự án đã thành công trong việc triển khai và trực quan hóa một loạt các thuật toán Trí tuệ Nhân tạo để giải quyết bài toán N-Rooks kinh điển. Bằng việc xây dựng một giao diện người dùng trực quan bằng `customtkinter`, chương trình không chỉ tìm ra lời giải mà còn cho phép người dùng quan sát, so sánh và hiểu sâu hơn về cách thức hoạt động, ưu và nhược điểm của từng phương pháp.
+Từ các thuật toán tìm kiếm cơ bản như **BFS, DFS** đến các phương pháp phức tạp hơn như **A\***, **Genetic Algorithm**, và **Alpha-Beta Pruning**, mỗi thuật toán đều cho thấy một cách tiếp cận khác nhau để giải quyết vấn đề, thể hiện sự đa dạng và phong phú của các kỹ thuật trong lĩnh vực AI.
+
+### 5.2. Bài học rút ra
+
+* **Hiểu sâu về thuật toán:** Việc trực tiếp lập trình và gỡ lỗi các thuật toán đã mang lại một cái nhìn sâu sắc và thực tế hơn nhiều so với việc chỉ học lý thuyết. Việc quan sát quá trình tìm kiếm qua giao diện giúp dễ dàng nhận ra sự khác biệt cốt lõi về hiệu quả, mức độ tối ưu và không gian bộ nhớ giữa các thuật toán.
+* **Tầm quan trọng của Cấu trúc dữ liệu:** Sự lựa chọn giữa `Queue` (trong BFS) và `Stack` (trong DFS), hay `Priority Queue` (trong UCS và A\*) là yếu tố quyết định đến toàn bộ hành vi và kết quả của thuật toán.
+* **Không có thuật toán nào là tốt nhất cho mọi bài toán:** Mỗi nhóm thuật toán có điểm mạnh riêng và phù hợp với các loại vấn đề khác nhau. Local Search hiệu quả cho việc tối ưu hóa, CSP mạnh mẽ trong việc xử lý các ràng buộc, và Game Search là cần thiết cho các môi trường đối kháng.
+* **Trực quan hóa là một công cụ học tập mạnh mẽ:** Giao diện đồ họa và hệ thống ghi log chi tiết đã chứng tỏ vai trò quan trọng trong việc làm cho các khái niệm AI trừu tượng trở nên dễ hiểu và sinh động hơn.
+Nhìn chung, dự án này là một bài tập thực hành quý báu, không chỉ củng cố kiến thức nền tảng về Trí tuệ Nhân tạo mà còn phát triển kỹ năng lập trình, giải quyết vấn đề và tư duy logic.
