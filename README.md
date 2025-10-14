@@ -15,7 +15,7 @@
 
 ### 2.1. Mô tả Bài toán
 
-Bài toán đặt **N quân Xe** (Rooks) lên một bàn cờ **$N \times N$** sao cho không có quân Xe nào có thể tấn công quân Xe khác.
+Bài toán đặt **N quân Xe** (Rooks) lên một bàn cờ **$N \times N$** (0 < N < 9)sao cho không có quân Xe nào có thể tấn công quân Xe khác.
 
 * **Mục tiêu (Goal State):** Đặt N quân Xe sao cho mỗi hàng và mỗi cột chỉ có **đúng một** quân Xe. Điều này đảm bảo không có hai quân Xe nào nằm trên cùng một hàng hoặc cùng một cột.
 
@@ -48,6 +48,7 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 * **Logic Sinh Trạng thái:** Các thuật toán tìm kiếm truyền thống (Uninformed, Informed, CSP) sinh trạng thái bằng cách đặt quân Xe theo thứ tự từng hàng, giúp giảm không gian tìm kiếm một cách hiệu quả.
 * **Trực quan hóa:** Giao diện cập nhật từng bước đi của thuật toán trên bàn cờ bên trái và hiển thị kết quả cuối cùng ở bàn cờ bên phải, giúp người dùng dễ dàng theo dõi và so sánh.
 * **Logging:** Mọi hành động, từ việc thử một trạng thái mới, quay lui, đến cắt tỉa (pruning), đều được ghi lại chi tiết trong ô log, cung cấp cái nhìn sâu sắc về cách hoạt động của từng thuật toán.
+* **Chương trình có thể nhập bàn cờ $N \times N$ với N từ 1 -> 8. Vì nhanh và trực quan hơn thì em xin phép chèn ảnh động GIF ở bàn cờ $5 \times 5$, nếu thuật toán cho phép em sẽ quay ở bàn cờ $8 \times 8$**
 
 ---
 
@@ -55,7 +56,7 @@ Trạng thái của bài toán được biểu diễn dưới dạng một danh 
 
 Mã nguồn đã triển khai một dải rộng các thuật toán, được phân loại rõ ràng và lựa chọn thông qua giao diện người dùng.
 
-### 3.1. Nhóm Thuật toán Tìm kiếm Mù (Uninformed Search)
+### 3.1. Nhóm Thuật Toán Tìm kiếm Không Có Thông Tin (Uninformed Search)
 
 | Thuật toán | Mục tiêu tìm kiếm | Đặc điểm |
 | :--- | :--- | :--- |
