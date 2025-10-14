@@ -8,14 +8,6 @@ def heuristic(self, positions):
     return abs(self.n - x - 1) + abs(self.n - y - 1)
 
 def Greedy(self, start_node):
-    class Node:
-        def __init__(self, state, heuristic=0, parent=None):
-            self.state = state
-            self.heuristic = heuristic
-            self.parent = parent
-        def __lt__(self, other):
-            return self.heuristic < other.heuristic
-    
     def actions(state):
         i = len(state)
         if i >= self.n: return []
@@ -30,50 +22,50 @@ def Greedy(self, start_node):
         return actions
     
     def run(start_node):
-        start_node = Node([], heuristic(self, (0, 0)))
-        path = [([], start_node.heuristic)]; self.add_log("---Path---\n[], Heuristic: " + str(start_node.heuristic))
+        start_node = (heuristic(self, (0, 0)), [])
+        path = [(heuristic(self, (0, 0)), [])]; self.add_log("---Path---\n[], Heuristic: " + str(start_node[0]))
         
         frontier = PriorityQueue()
         frontier.put(start_node)
-        explored = {tuple(map(tuple, start_node.state)): start_node.heuristic}
+        explored = {tuple(map(tuple, start_node[1])): start_node[0]}
         while True:
             if frontier.empty():
-                return None, None, path
+                return None, path
             current_node = frontier.get()
-            path.append((current_node.state, current_node.heuristic))
-            self.add_log(str(current_node.state) + " Heuristic: " + str(current_node.heuristic))
-            if self.is_goal(current_node.state):
-                return self.solution(current_node), current_node, path
-            for action, h in actions(current_node.state):
-                child_heuristic = h
-                child_node = Node(action, child_heuristic, current_node)
-                child_state_tuple = tuple(map(tuple, child_node.state))
+            path.append(current_node)
+            self.add_log(str(current_node[1]) + " Heuristic: " + str(current_node[0]))
+            if self.is_goal(current_node[1]):
+                return current_node, path
+            for action, child_heuristic in actions(current_node[1]):
+                child_node = (child_heuristic, action)
+                child_state_tuple = tuple(map(tuple, child_node[1]))
 
-                if (all(child_node.state != n.state for n in frontier.queue) and (child_state_tuple not in explored)):
+                if (all(child_node[1] != n[1] for n in frontier.queue) and (child_state_tuple not in explored)):
                     frontier.put(child_node)
-                elif (any(child_node.state == n.state for n in frontier.queue) and child_heuristic < explored[child_state_tuple]):
+                    explored[child_state_tuple] = child_heuristic
+                elif (any(child_node[1] == n[1] for n in frontier.queue) and child_heuristic < explored[child_state_tuple]):
                     explored[child_state_tuple] = child_heuristic
                     # frontier.put(child_node)
                     for i, n in enumerate(frontier.queue):
-                        if n.state == child_node.state:
+                        if n[1] == child_node[1]:
                             frontier.queue[i] = child_node
                             heapify(frontier.queue)
                             break
 
-    slt, result, path = run(start_node)
+    result, path = run(start_node)
     if result:
-        self.add_log("---Result---\n"+str(result.state) + " Heuristic: " + str(result.heuristic))
-        self.place_rook(self.right_board_cells, self.change_state(result.state))
-        self.right_label.configure(text="Heuristic: " + str(result.heuristic))
-
-        for i in path:
-            self.place_rook(self.left_board_cells, self.change_state(i[0]))
-            self.left_label.configure(text="Heuristic: " + str(i[1]))
-            self.update()
-            self.after(50)
+        self.add_log("---Result---\n"+str(result[1]) + " Heuristic: " + str(result[0]))
+        self.place_rook(self.right_board_cells, self.change_state(result[1]))
+        self.right_label.configure(text="Heuristic: " + str(result[0]))
     else:
         self.add_log("No solution")
         self.right_label.configure(text="No solution")
+    
+    for i in path:
+        self.place_rook(self.left_board_cells, self.change_state(i[1]))
+        self.left_label.configure(text="Heuristic: " + str(i[0]))
+        self.update()
+        self.after(50)
 
 def A_Star(self, start_node):
     class Node:

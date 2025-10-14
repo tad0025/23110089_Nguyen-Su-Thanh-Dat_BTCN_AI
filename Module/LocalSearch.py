@@ -1,4 +1,4 @@
-import random, math, time
+import random, math
 
 def calculate_total_heuristic(state):
     # Tính tổng heuristic của một trạng thái (tổng số cặp quân xe tấn công nhau)

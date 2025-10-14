@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from Module.UninformedSearch import *
-from Module.IninformedSearch import *
+from Module.InformedSearch import *
 from Module.LocalSearch import *
 
 ctk.set_appearance_mode("light")  
@@ -227,7 +227,7 @@ class EightRooksApp(ctk.CTk):
         self.add_log(f"Đang sử dụng thuật toán {self.algorithm_combo.get()}")
         self.update()
 
-        initial_board = [[0 for _ in range(self.n)] for _ in range(self.n)]
+        initial_board = []
         solve_function = algorithms_func.get(self.algorithm_combo.get())
         solve_function(self, initial_board)
         self.note_label.configure(text="Trạng thái: Hoàn thành!")
@@ -241,13 +241,6 @@ class EightRooksApp(ctk.CTk):
             rows.add(x); cols.add(y)
         
         return True
-    
-    def solution(self, node):
-        path = []
-        while node:
-            path.append(node.state)
-            node = node.parent
-        return path[::-1]
     
     def change_state(self, state):
         a = [[0 for _ in range(self.n)] for _ in range(self.n)]
