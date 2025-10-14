@@ -20,7 +20,6 @@ def Backtracking(self, start_node):
                     return result
         
         self.add_log(f"Backtracking from: {current_placement}")
-        path.append(current_placement) # <-- DÒNG BỊ LỖI ĐÃ ĐƯỢC XÓA BỎ
         return None
     
     solution = backtrack_recursive(start_node)
