@@ -8,7 +8,7 @@
 * **Mã số sinh viên:** 23110089
 * **Môn học:** Trí tuệ Nhân tạo
 * **Lớp:** ARIN330585_05CLC Buổi: Sáng thứ 2 - thứ 6, tiết 1 - 4
-* **Link Github:** https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI
+## **Link Github:** https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI
   
 ---
 
