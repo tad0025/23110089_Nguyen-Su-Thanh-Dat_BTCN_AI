@@ -8,7 +8,8 @@
 * **Mã số sinh viên:** 23110089
 * **Môn học:** Trí tuệ Nhân tạo
 * **Lớp:** ARIN330585_05CLC Buổi: Sáng thứ 2 - thứ 6, tiết 1 - 4
-
+* **Link Github:** https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI
+  
 ---
 
 ## 2. TỔNG QUAN VỀ BÀI TOÁN: N QUÂN XE (N-Rooks Problem)
@@ -126,7 +127,7 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
   * **Cấp 2:** Tất cả các trạng thái có 2 quân xe, ví dụ: `[(0, 0), (1, 1)]`, `[(0, 0), (1, 2)]`,...
   * ... và cứ thế tiếp tục.
 - Cách tiếp cận này đảm bảo rằng nếu có lời giải, BFS sẽ tìm ra lời giải có số bước đi (số quân xe) ít nhất.
-   ![BFS](./GIF/BFS.gif)
+   ![BFS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/BFS.gif?raw=true)
 2.  **Depth First Search (DFS):**
   - Trái ngược với BFS, thuật toán DFS thực hiện tìm kiếm theo chiều sâu. Tức là, nó sẽ ưu tiên đi sâu vào một nhánh của cây tìm kiếm cho đến khi nào không thể đi tiếp được nữa (đạt đến "lá" hoặc trạng thái cụt) rồi mới quay lui (backtrack) để thử một nhánh khác. Trong bài toán N-Rooks, điều này có nghĩa là thuật toán sẽ cố gắng đặt quân xe thứ nhất, rồi thứ hai, thứ ba,... một cách nhanh nhất có thể theo một hướng duy nhất. Nếu việc đặt quân xe tiếp theo bị chặn, nó sẽ quay lại bước trước đó và thử một vị trí khác. Cách tiếp cận này thường tìm ra lời giải rất nhanh, nhưng không đảm bảo lời giải đó là tối ưu nhất (trong các bài toán có chi phí).
     ![DFS](./GIF/DFS.gif)
