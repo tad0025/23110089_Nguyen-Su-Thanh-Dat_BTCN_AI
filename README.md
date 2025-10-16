@@ -130,30 +130,30 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
    ![BFS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/BFS.gif?raw=true)
 2.  **Depth First Search (DFS):**
   - Trái ngược với BFS, thuật toán DFS thực hiện tìm kiếm theo chiều sâu. Tức là, nó sẽ ưu tiên đi sâu vào một nhánh của cây tìm kiếm cho đến khi nào không thể đi tiếp được nữa (đạt đến "lá" hoặc trạng thái cụt) rồi mới quay lui (backtrack) để thử một nhánh khác. Trong bài toán N-Rooks, điều này có nghĩa là thuật toán sẽ cố gắng đặt quân xe thứ nhất, rồi thứ hai, thứ ba,... một cách nhanh nhất có thể theo một hướng duy nhất. Nếu việc đặt quân xe tiếp theo bị chặn, nó sẽ quay lại bước trước đó và thử một vị trí khác. Cách tiếp cận này thường tìm ra lời giải rất nhanh, nhưng không đảm bảo lời giải đó là tối ưu nhất (trong các bài toán có chi phí).
-    ![DFS](./GIF/DFS.gif)
+    ![DFS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/DFS.gif?raw=true)
 3. **Uniform Cost Search (UCS)**
   - UCS mở rộng các trạng thái dựa trên chi phí thấp nhất tính từ trạng thái ban đầu (g(n)). Nó không quan tâm đến "số bước đi" như BFS, mà quan tâm đến "tổng trọng số" của đường đi. Trong bài toán này, chi phí được định nghĩa là cost = 2 * (self.n - len(positions)) + 1, tức là ưu tiên các bước đi giúp giảm thiểu số ô bị chặn.
   - Thuật toán sử dụng một hàng đợi ưu tiên (Priority Queue) để luôn chọn trạng thái có tổng chi phí g(n) nhỏ nhất để xét duyệt tiếp theo. Điều này đảm bảo rằng đường đi tìm được (nếu có) sẽ là đường đi có tổng chi phí thấp nhất.
-    ![UCS](./GIF/UCS.gif)
+    ![UCS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/UCS.gif?raw=true)
 4. **Depth Limited Search (DLS)**
   - DLS là một biến thể của DFS, nhưng có thêm một tham số là **giới hạn độ sâu (limit)**. Nó sẽ thực hiện tìm kiếm sâu cho đến khi đạt đến giới hạn này. Nếu không tìm thấy lời giải trong giới hạn đó, nó sẽ dừng lại.
   - Thuật toán sử dụng đệ quy để duyệt sâu. Nếu độ sâu hiện tại bằng `limit`, nó sẽ ngừng nhánh đó lại. Điều này giúp ngăn chặn việc DFS đi vào các nhánh vô hạn trong những bài toán phức tạp hơn. Trong bài toán N-Rooks, giới hạn được đặt bằng N.
-    ![DLS](./GIF/DLS.gif)
+    ![DLS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/DLS.gif?raw=true)
 5. **Iterative Deepening Search (IDS)**
   - IDS là sự kết hợp thông minh giữa BFS và DFS. Nó thực hiện một loạt các cuộc gọi DLS với giới hạn độ sâu tăng dần (0, 1, 2, ..., N).
   - Nó bắt đầu bằng cách tìm kiếm ở độ sâu 0, sau đó là 1, rồi 2, và cứ thế tiếp tục. Bằng cách này, nó vừa có được ưu điểm về bộ nhớ của DFS (vì mỗi lần chỉ duyệt sâu một nhánh), vừa đảm bảo tính hoàn chỉnh và tối ưu về số bước như BFS (vì nó sẽ tìm thấy lời giải ở độ sâu nông nhất trước).
-    ![IDS](./GIF/IDS.gif)
+    ![IDS](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/IDS.gif?raw=true)
 
 ### 4.2. Nhóm Thuật toán Tìm kiếm có Thông tin (Informed Search)
 
 1. **Greedy Search**
    - Greedy Search là một thuật toán "tham lam". Tại mỗi bước, nó luôn chọn hành động có vẻ tốt nhất tại thời điểm đó, dựa trên một hàm **heuristic (`h(n)`)**. Hàm heuristic ước tính chi phí từ trạng thái hiện tại đến đích. Trong mã nguồn, `h(n) = abs(N - x - 1) + abs(N - y - 1)`, ước tính khoảng cách Manhattan đến góc dưới bên phải.
    - Tương tự UCS, nó dùng hàng đợi ưu tiên nhưng chỉ sắp xếp dựa trên giá trị heuristic `h(n)`. Nó bỏ qua chi phí đã đi (`g(n)`), do đó có thể tìm ra lời giải nhanh nhưng không đảm bảo là tối ưu nhất.
-   ![Greedy](./GIF/Greedy.gif)
+   ![Greedy](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Greedy.gif?raw=true)
 2. **A\* Search**
    - A\* là sự kết hợp của UCS và Greedy Search. Nó đánh giá các trạng thái dựa trên tổng của chi phí thực tế từ đầu đến hiện tại (`g(n)`) và chi phí ước tính đến đích (`h(n)`). Hàm đánh giá là `f(n) = g(n) + h(n)`.
    - Nó sử dụng hàng đợi ưu tiên để luôn chọn trạng thái có `f(n)` thấp nhất. Sự kết hợp này giúp A\* vừa có định hướng (nhờ `h(n)`), vừa cân nhắc chi phí đã đi (nhờ `g(n)`), đảm bảo tìm ra lời giải có tổng chi phí thấp nhất nếu hàm heuristic là hợp lệ (admissible).
-   ![AStar](./GIF/AStar.gif)
+   ![AStar](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/AStar.gif?raw=true)
 
 ### 4.3. Nhóm Thuật toán Tìm kiếm Cục bộ (Local Search)
 
@@ -162,11 +162,11 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
 1. **Hill Climbing**
    - Thuật toán bắt đầu với một lời giải ngẫu nhiên. Sau đó, nó liên tục di chuyển đến trạng thái "láng giềng" tốt hơn (có heuristic thấp hơn - ít cặp quân xe ăn nhau hơn). Nó sẽ dừng lại khi không có láng giềng nào tốt hơn.
    - Tại mỗi bước, nó xem xét tất cả các trạng thái láng giềng (bằng cách di chuyển một quân xe sang một ô khác trong cùng một hàng) và chọn trạng thái có heuristic tốt nhất. Nhược điểm là dễ bị "mắc kẹt" ở các cực tiểu cục bộ (local minima).
-   ![Hill_Climbing](./GIF/Hill_Climbing.gif)
+   ![Hill_Climbing](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Hill_Climbing.gif?raw=true)
 3. **Simulated Annealing**
    - Đây là một phiên bản cải tiến của Hill Climbing. Để tránh bị kẹt ở cực tiểu cục bộ, nó cho phép thỉnh thoảng di chuyển đến một trạng thái **tệ hơn** với một xác suất nhất định. Xác suất này cao lúc đầu ("nhiệt độ" cao) và giảm dần theo thời gian.
    - Nó chọn một láng giềng ngẫu nhiên. Nếu láng giềng tốt hơn, nó sẽ di chuyển. Nếu tệ hơn, nó vẫn có thể di chuyển dựa trên một xác suất `exp((current_h - next_h) / temperature)`. "Nhiệt độ" giảm dần giúp thuật toán hội tụ về một giải pháp tốt.
-   ![Simulated_Annealing](./GIF/Simulated_Annealing.gif)
+   ![Simulated_Annealing](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Simulated_Annealing.gif?raw=true)
 5. **Genetic Algorithm**
    - Thuật toán này mô phỏng quá trình tiến hóa tự nhiên. Nó duy trì một "quần thể" gồm nhiều lời giải. Qua các "thế hệ", các lời giải tốt nhất sẽ được "chọn lọc", "lai ghép" (crossover) và "đột biến" (mutation) để tạo ra thế hệ mới tốt hơn.
       * **Hoạt động:**
@@ -174,52 +174,52 @@ Mã nguồn đã triển khai một dải rộng các thuật toán, được ph
           * **Lai ghép:** Kết hợp hai cá thể cha mẹ để tạo ra con cái.
           * **Đột biến:** Thay đổi ngẫu nhiên một phần nhỏ của cá thể để tạo sự đa dạng.
           * Quá trình này lặp lại cho đến khi tìm được lời giải tối ưu hoặc đạt đến số thế hệ tối đa.
-   ![Genetic_Algorithm](./GIF/Genetic_Algorithm.gif)
+   ![Genetic_Algorithm](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Genetic_Algorithm.gif?raw=true)
 7. **Beam Search**
    - Beam Search là một biến thể của BFS nhưng có giới hạn về bộ nhớ. Thay vì giữ lại tất cả các trạng thái ở mỗi cấp độ, nó chỉ giữ lại `k` trạng thái tốt nhất (gọi là `beam_width`).
    - Từ `k` trạng thái tốt nhất hiện tại, nó sinh ra tất cả các trạng thái con. Sau đó, từ danh sách các trạng thái con này, nó lại chọn ra `k` trạng thái tốt nhất để tiếp tục cho vòng lặp tiếp theo. Điều này giúp giảm không gian tìm kiếm một cách đáng kể.
-   ![Beam](./GIF/Beam.gif)
+   ![Beam](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Beam.gif?raw=true)
 
 ### 4.4. Nhóm Bài toán Thỏa mãn Ràng buộc (CSP)
 
 1. **Backtracking Search**
    - Đây là một phương pháp duyệt sâu (DFS) cơ bản cho CSP. Nó gán giá trị (vị trí cột) cho từng biến (hàng) một cách tuần tự. Nếu một phép gán vi phạm ràng buộc (đặt quân xe vào cột đã có), nó sẽ "quay lui" (backtrack) và thử một giá trị khác.
    - Thuật toán xây dựng lời giải từng bước một. Tại mỗi hàng, nó thử đặt quân xe vào từng cột. Nếu hợp lệ, nó đi tiếp đến hàng sau. Nếu không hợp lệ hoặc không thể đi tiếp, nó quay lại hàng trước đó và thử cột khác.
-   ![Backtracking](./GIF/Backtracking.gif)
+   ![Backtracking](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Backtracking.gif?raw=true)
 3. **Forward Checking**
    - Đây là một cải tiến của Backtracking. Sau khi gán một giá trị cho một biến (đặt quân xe vào hàng `r`, cột `c`), nó sẽ nhìn về phía trước và loại bỏ tất cả các giá trị không tương thích khỏi "miền giá trị" của các biến chưa được gán. Cụ thể, nó sẽ loại bỏ cột `c` khỏi các lựa chọn của tất cả các hàng còn lại.
    - Khi đặt một quân xe, thuật toán sẽ cập nhật "domain" (các cột có thể đặt) của các hàng tương lai. Nếu bất kỳ hàng nào trong tương lai hết lựa chọn (domain rỗng), thuật toán biết ngay nhánh này sẽ thất bại và quay lui sớm hơn, giúp giảm không gian tìm kiếm.
-   ![Forward_Checking](./GIF/Forward_Checking.gif)
+   ![Forward_Checking](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Forward_Checking.gif?raw=true)
 5. **AC-3 (Arc Consistency 3)**
    - Thuật toán AC-3 là một bước tiền xử lý (hoặc thực hiện xen kẽ) để làm cho bài toán "nhất quán cung". Nó xem xét các cặp biến (hàng) và loại bỏ các giá trị (cột) khỏi miền của chúng nếu không tìm thấy giá trị tương ứng ở biến kia thỏa mãn ràng buộc.
    - Thuật toán duy trì một hàng đợi chứa các "cung" (cặp biến). Với mỗi cung `(Xi, Xj)`, nó cố gắng đảm bảo rằng với mỗi giá trị trong miền của `Xi`, có ít nhất một giá trị trong miền của `Xj` thỏa mãn ràng buộc. Nếu không, giá trị đó sẽ bị loại bỏ. Quá trình này giúp lọc bớt miền giá trị trước khi bắt đầu Backtracking, làm cho việc tìm kiếm hiệu quả hơn.
-   ![AC3](./GIF/AC3.gif)
+   ![AC3](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/AC3.gif?raw=true)
 
 ### 4.5. Nhóm Môi trường Phức tạp (Complex Environment Search)
 
 1. **And-Or Search**
    - Thuật toán này được dùng cho các môi trường không tất định, nơi một hành động có thể dẫn đến nhiều kết quả. Nó tìm kiếm một **kế hoạch** (một cây con) thay vì một đường đi duy nhất.
    - Cây tìm kiếm bao gồm các nút **OR** (nơi chúng ta chọn một hành động) và các nút **AND** (đại diện cho tất cả các kết quả có thể có của một hành động). Một kế hoạch thành công khi nó có thể xử lý tất cả các kết quả ở nút AND và dẫn đến đích. Trong bài toán này, nó được mô phỏng bằng cách coi việc đặt quân xe ở mỗi hàng là một "tiểu vấn đề" phải được giải quyết.
-   ![And_Or](./GIF/And_Or.gif)
+   ![And_Or](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/And_Or.gif?raw=true)
 3. **Belief State Search**
    - Được sử dụng trong các môi trường không quan sát được hoàn toàn, nơi agent không biết chắc mình đang ở trạng thái nào. Agent sẽ duy trì một **"trạng thái niềm tin" (belief state)**, là một tập hợp tất cả các trạng thái có thể xảy ra.
    - Thuật toán tìm kiếm trên không gian của các belief state. Nó bắt đầu với một belief state ban đầu. Mỗi hành động sẽ chuyển belief state hiện tại thành một belief state kế tiếp, là tập hợp tất cả các trạng thái có thể đạt được từ belief state cũ sau hành động đó. Mục tiêu là tìm một chuỗi hành động dẫn đến một belief state mà trong đó có chứa trạng thái đích.
-   ![Belief_State](./GIF/Belief_State.gif)
+   ![Belief_State](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Belief_State.gif?raw=true)
 5. **Partially Observable Search**
    - Tương tự như Belief State Search, thuật toán này cũng giải quyết các bài toán trong môi trường quan sát một phần. Agent sử dụng các **quan sát (observations)** để cập nhật và thu hẹp belief state của mình.
    - Dựa trên belief state hiện tại, agent thực hiện một hành động, sau đó nhận một quan sát. Quan sát này giúp agent loại bỏ các trạng thái không còn phù hợp khỏi belief state, tạo ra một belief state mới chính xác hơn. Quá trình tìm kiếm là tìm một chuỗi các hành động để đạt được mục tiêu, dựa trên việc cập nhật belief state này.
-   ![Partially_Observable](./GIF/Partially_Observable.gif)
+   ![Partially_Observable](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Partially_Observable.gif?raw=true)
 
 ### 4.6. Nhóm Môi trường Đối kháng (Game Search Problem)
 
 1. **Minimax**
    - Minimax được thiết kế cho các trò chơi đối kháng hai người chơi, có tổng bằng không (zero-sum). Nó giả định rằng cả hai người chơi đều chơi tối ưu. Người chơi **MAX** (ta) sẽ cố gắng **tối đa hóa** điểm số của mình, trong khi người chơi **MIN** (đối thủ) sẽ cố gắng **tối thiểu hóa** điểm số của MAX.
    - Thuật toán xây dựng một cây trò chơi. Nó đi xuống đến các trạng thái kết thúc (lá) để tính giá trị (thắng/thua). Sau đó, nó đi ngược lên, ở mỗi cấp, MAX sẽ chọn nước đi có giá trị cao nhất, và MIN sẽ chọn nước đi có giá trị thấp nhất.
-   ![Minimax](./GIF/Minimax.gif)
+   ![Minimax](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Minimax.gif?raw=true)
 3. **Alpha-Beta Pruning**
    - Đây là một phiên bản tối ưu hóa của Minimax. Nó giúp giảm đáng kể số lượng nút cần phải duyệt trên cây trò chơi bằng cách **cắt tỉa** các nhánh mà chắc chắn sẽ không ảnh hưởng đến quyết định cuối cùng.
    - Nó duy trì hai giá trị, **Alpha** (điểm số tốt nhất mà MAX có thể đảm bảo) và **Beta** (điểm số tốt nhất mà MIN có thể đảm bảo). Nếu trong quá trình duyệt, một nhánh có giá trị khiến cho `beta <= alpha`, nhánh đó sẽ bị cắt tỉa vì người chơi đối diện sẽ không bao giờ để cho tình huống đó xảy ra.
-   ![Alpha_Beta](./GIF/Alpha_Beta.gif)
+   ![Alpha_Beta](https://github.com/tad0025/23110089_Nguyen-Su-Thanh-Dat_BTCN_AI/blob/main/GIF/Alpha_Beta.gif?raw=true)
 
 ---
 
